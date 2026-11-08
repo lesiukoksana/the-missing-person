@@ -1,0 +1,329 @@
+.hub {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 76rem;
+}
+
+.hub__header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.hub__desk {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(17rem, 1fr);
+  align-items: start;
+  gap: var(--space-6);
+}
+
+/* Dossier: an aged paper record lying on the desk */
+.dossier {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: var(--space-5);
+  padding: var(--space-6);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 110%, rgb(120 96 60 / 0.3), transparent 55%),
+    linear-gradient(170deg, var(--c-paper), var(--c-paper-dark));
+  color: var(--c-paper-ink);
+  box-shadow: 0 2px 0 #a89c82, 0 18px 40px rgb(0 0 0 / 0.55);
+  transform: rotate(-0.35deg);
+}
+
+.dossier h2 {
+  margin-bottom: var(--space-3);
+  padding-right: 6.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dossier__photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  align-self: start;
+  padding: var(--space-2);
+  border: 1px dashed var(--c-paper-muted);
+  background: rgb(60 48 32 / 0.1);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--c-paper-muted);
+}
+
+.dossier__body {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.dossier__facts {
+  display: grid;
+  gap: var(--space-1);
+  font-size: 0.9375rem;
+}
+
+.dossier__facts div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.dossier__facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.9;
+  color: var(--c-paper-muted);
+}
+
+.dossier blockquote {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--c-stamp);
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  line-height: 1.2;
+}
+
+.dossier :focus-visible {
+  outline-color: var(--c-paper-ink);
+}
+
+.stamp {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-4);
+  padding: 0.125rem 0.625rem;
+  border: 2px solid var(--c-stamp);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-stamp);
+  opacity: 0.8;
+  transform: rotate(6deg);
+}
+
+/* Status panel */
+.status-panel {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--c-line);
+  border-top: 3px solid var(--c-text-muted);
+  background: var(--c-charcoal);
+}
+
+.status-panel--active {
+  border-top-color: var(--c-burgundy-text);
+}
+
+.status-panel--alarm {
+  border-top-color: var(--c-alarm);
+}
+
+.status-panel__heading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.status-panel__label {
+  font-family: var(--font-display);
+  font-size: 2.125rem;
+  line-height: 1.05;
+}
+
+.status-panel--alarm .status-panel__label {
+  color: var(--c-alarm);
+}
+
+.status-panel__detail {
+  font-size: 0.9375rem;
+  color: var(--c-text-muted);
+}
+
+.progress {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+.progress__label {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: 0.875rem;
+}
+
+.progress__label span:last-child {
+  font-family: var(--font-mono);
+}
+
+.progress__track {
+  height: 4px;
+  background: var(--c-line);
+}
+
+.progress__fill {
+  height: 100%;
+  background: var(--c-burgundy-text);
+  transition: width 400ms var(--ease-out);
+}
+
+.ledger {
+  display: grid;
+}
+
+.ledger div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-top: 1px solid var(--c-line);
+  font-size: 0.875rem;
+}
+
+.ledger dd {
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+/* Lower half */
+.hub__lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(17rem, 1fr);
+  align-items: start;
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+}
+
+.file-list {
+  display: grid;
+}
+
+.file-row {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-3);
+  min-height: var(--tap-target);
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--c-line);
+  text-decoration: none;
+  transition: background-color 160ms, padding-left 160ms var(--ease-out);
+}
+
+.file-row:hover {
+  padding-left: var(--space-3);
+  background: var(--c-charcoal);
+}
+
+.file-row__index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+}
+
+.file-row__text {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.file-row__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+.file-row__description {
+  font-size: 0.9375rem;
+  color: var(--c-text-muted);
+}
+
+.file-row__state {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-olive);
+}
+
+.file-row--locked .file-row__title {
+  color: var(--c-text-muted);
+}
+
+.file-row--locked .file-row__state {
+  color: var(--c-burgundy-text);
+}
+
+.empty-note {
+  font-size: 0.9375rem;
+  color: var(--c-text-muted);
+}
+
+.empty-note a {
+  color: var(--c-text);
+}
+
+.discovery-log {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.discovery-log li {
+  display: grid;
+  gap: var(--space-1);
+  font-size: 0.9375rem;
+}
+
+.discovery-log time {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+}
+
+@media (max-width: 72rem) {
+  .hub__desk,
+  .hub__lower {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 40rem) {
+  .dossier {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-5);
+    transform: none;
+  }
+
+  .dossier__photo {
+    width: 6rem;
+  }
+
+  .stamp {
+    top: var(--space-4);
+  }
+
+  .dossier h2 {
+    padding-right: 0;
+  }
+}
+
+.status-panel__ending {
+  justify-self: start;
+}

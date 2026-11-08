@@ -1,0 +1,321 @@
+/* File Recovery */
+.recovery__summary {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--c-text-muted);
+}
+
+.recovery__body {
+  grid-template-columns: 24rem minmax(0, 1fr);
+}
+
+.recovery__list ul {
+  display: grid;
+  border-top: 1px solid var(--c-line);
+}
+
+.rf-row {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr) auto;
+  grid-template-areas:
+    'icon path status'
+    'icon meta status';
+  align-items: center;
+  column-gap: var(--space-2);
+  min-height: var(--tap-target);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--c-line);
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  transition: background-color 160ms;
+}
+
+.rf-row:hover {
+  background: var(--c-charcoal);
+}
+
+.rf-row[aria-current='page'] {
+  border-left-color: var(--c-burgundy-text);
+  background: var(--c-charcoal-raised);
+}
+
+.rf-row__icon {
+  grid-area: icon;
+  color: var(--c-text-muted);
+}
+
+.rf-row__path {
+  grid-area: path;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+
+.rf-row__meta {
+  grid-area: meta;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--c-text-muted);
+}
+
+.rf-row .file-status {
+  grid-area: status;
+}
+
+.file-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.file-status--recovered,
+.file-status--restored,
+.file-status--rebuilt,
+.file-status--decrypted {
+  color: var(--c-olive);
+}
+
+.file-status--deleted,
+.file-status--corrupted {
+  color: var(--c-burgundy-text);
+}
+
+.file-status--encrypted {
+  color: var(--c-text-muted);
+}
+
+.file-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  overflow-wrap: anywhere;
+}
+
+.file-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--c-line);
+  background: var(--c-charcoal);
+  font-size: 0.875rem;
+}
+
+.file-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.restore__progress {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 24rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.restore__bar {
+  height: 4px;
+  background: var(--c-line);
+}
+
+.restore__bar span {
+  display: block;
+  height: 100%;
+  background: var(--c-olive);
+  transition: width 400ms var(--ease-out);
+}
+
+.file-body {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.file-body pre {
+  margin: 0;
+  padding: var(--space-5);
+  overflow-x: auto;
+  border: 1px solid var(--c-line);
+  background: #0c0d0e;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.file-body--code pre,
+.file-body--log pre {
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+.file-body--eleanor pre,
+.file-body--letter pre {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+}
+
+.file-body--letter pre,
+.file-body--handwritten pre {
+  max-width: 44rem;
+  border: 0;
+  background: linear-gradient(175deg, #e4dcc8, #d6ccb3);
+  color: var(--c-paper-ink);
+}
+
+.file-body--letter pre {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+.file-body--handwritten pre {
+  color: #1f3b7a;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.3125rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.file-body__image {
+  position: relative;
+  max-width: 40rem;
+  border: 1px solid var(--c-line);
+}
+
+.file-body__stamp {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0.25rem 0.5rem;
+  background: #000;
+  color: #e6e6e0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: pre;
+}
+
+/* Terminal */
+.terminal-page {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 64rem;
+}
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: min(70vh, 44rem);
+  min-height: 22rem;
+  border: 1px solid #2f342b;
+  background: radial-gradient(ellipse at center, #121611, #0a0c0a);
+  color: #c9cdb5;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  box-shadow: inset 0 0 60px rgb(0 0 0 / 0.65), 0 18px 40px rgb(0 0 0 / 0.5);
+  cursor: text;
+}
+
+.terminal__output {
+  flex: 1;
+  padding: var(--space-4) var(--space-4) var(--space-2);
+  overflow-y: auto;
+}
+
+.terminal__line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.terminal__line--muted {
+  color: #8c937d;
+}
+
+.terminal__line--error {
+  color: #d48a8d;
+}
+
+.terminal__line--accent {
+  color: #dfe3b4;
+}
+
+.terminal__line--alarm {
+  color: var(--c-alarm);
+}
+
+.terminal__line--input {
+  color: #a3a87c;
+}
+
+.terminal__line--eleanor {
+  font-family: var(--font-oldweb);
+  color: #e8e3d1;
+}
+
+.terminal__form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4) var(--space-3);
+  border-top: 1px solid #23271f;
+}
+
+.terminal__prompt {
+  color: #a3a87c;
+  overflow-wrap: anywhere;
+}
+
+.terminal__input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  min-height: var(--tap-target);
+  padding: 0 var(--space-2);
+  border: 1px solid transparent;
+  background: transparent;
+  color: #eef0dc;
+  font: inherit;
+  caret-color: #dfe3b4;
+}
+
+.terminal__input:focus-visible {
+  outline: none;
+  border-color: #4a5040;
+}
+
+.terminal__help {
+  font-size: 0.8125rem;
+  color: var(--c-text-muted);
+}
+
+@media (max-width: 60rem) {
+  .recovery__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 40rem) {
+  .terminal {
+    height: 70dvh;
+    font-size: 0.8125rem;
+  }
+
+  .terminal__output {
+    padding: var(--space-3);
+  }
+
+  .terminal__form {
+    padding-inline: var(--space-3);
+  }
+}

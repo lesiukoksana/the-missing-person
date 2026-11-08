@@ -1,0 +1,701 @@
+/* The simulated browser window around Eleanor's site */
+.browser {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 2rem);
+  border: 1px solid #55555a;
+  background: #b9b6ac;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.5);
+  color: #15151a;
+}
+
+.browser__titlebar {
+  padding: 0.25rem 0.625rem;
+  background: linear-gradient(90deg, #3d4655, #778393);
+  color: #f4f2ea;
+  font: 700 0.8125rem/1.4 Tahoma, Verdana, sans-serif;
+}
+
+.browser__address {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3125rem 0.5rem;
+  border-bottom: 1px solid #77756d;
+  font: 0.8125rem/1.4 Tahoma, Verdana, sans-serif;
+}
+
+.browser__address-value {
+  flex: 1;
+  min-width: 0;
+  padding: 0.125rem 0.375rem;
+  overflow-wrap: anywhere;
+  border: 1px inset #8d8b83;
+  background: #f5f3ea;
+}
+
+.browser__viewport {
+  flex: 1;
+  background: #f1eee3;
+}
+
+/* Eleanor's site */
+.oldweb {
+  padding: clamp(0.5rem, 3vw, 2rem);
+  background-color: #6d6f60;
+  background-image:
+    linear-gradient(45deg, #66685a 25%, transparent 25% 75%, #66685a 75%),
+    linear-gradient(45deg, #66685a 25%, transparent 25% 75%, #66685a 75%);
+  background-position: 0 0, 11px 11px;
+  background-size: 22px 22px;
+  color: #1c1c1c;
+  font-family: var(--font-oldweb);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.oldweb :focus-visible,
+.server-error :focus-visible,
+.browser__viewport :focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.oldweb__frame {
+  max-width: 54rem;
+  margin-inline: auto;
+  border: 3px double #4c2125;
+  background: #f4f0e2;
+}
+
+.oldweb__header {
+  padding: 1rem;
+  border-bottom: 1px solid #4c2125;
+  background: #e6dfc6;
+  text-align: center;
+}
+
+.oldweb__title {
+  color: #6e1f2a;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-style: italic;
+  line-height: 1.15;
+}
+
+.oldweb__nav {
+  padding: 0.375rem 0.5rem;
+  border-bottom: 1px solid #4c2125;
+  background: #d9d1b3;
+  text-align: center;
+  line-height: 2;
+}
+
+.oldweb__nav a[aria-current='page'] {
+  color: #6e1f2a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.oldweb__content {
+  padding: clamp(0.875rem, 3vw, 1.5rem);
+}
+
+.oldweb__footer {
+  padding: 0.5rem;
+  border-top: 1px solid #a9a184;
+  color: #5b564a;
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.oldweb a,
+.server-error a {
+  color: #18388f;
+}
+
+.oldweb a:visited {
+  color: #5d2a78;
+}
+
+.oldweb a:hover {
+  color: #a3202a;
+}
+
+.oldweb h1 {
+  margin-bottom: 0.5rem;
+  color: #6e1f2a;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.oldweb h2 {
+  margin-block: 1rem 0.375rem;
+  color: #6e1f2a;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1875rem;
+  line-height: 1.2;
+}
+
+.oldweb h3 {
+  margin-bottom: 0.375rem;
+  font-size: 0.9375rem;
+}
+
+/* Eleanor types two spaces after a full stop. It's a clue, so the browser mustn't collapse them. */
+.eleanor-text,
+.eleanor-text p,
+.oldweb-entry__message {
+  white-space: pre-wrap;
+}
+
+.oldweb-prose {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 42rem;
+  margin-block: 0.75rem;
+}
+
+.oldweb-date {
+  color: #5b564a;
+  font-size: 0.75rem;
+}
+
+.oldweb-list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.oldweb-list--bullets {
+  padding-left: 1.25rem;
+  list-style: square;
+}
+
+.oldweb-notice {
+  margin-block: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px dashed #8b8368;
+  color: #5b564a;
+  font-size: 0.75rem;
+}
+
+/* Home */
+.oldweb-home {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 13rem;
+  gap: 1.5rem;
+}
+
+.oldweb-home__intro .eleanor-text {
+  margin-bottom: 0.625rem;
+}
+
+.oldweb-home__side {
+  padding: 0.75rem;
+  border: 1px solid #a9a184;
+  background: #ebe5cd;
+}
+
+.oldweb-new {
+  padding-inline: 0.25rem;
+  background: #8c1d23;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.oldweb-facts {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.oldweb-facts dt {
+  font-size: 0.75rem;
+  color: #5b564a;
+}
+
+.oldweb-counter {
+  display: inline-block;
+  padding: 0.0625rem 0.375rem;
+  background: #101010;
+  color: #d2d09d;
+  font-family: var(--font-mono);
+  letter-spacing: 0.15em;
+}
+
+.oldweb-still-link {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+.oldweb-still-link a {
+  display: inline-block;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  line-height: 2.75rem;
+  text-align: center;
+}
+
+/* Blog */
+.oldweb-blogroll {
+  display: grid;
+  margin-top: 0.75rem;
+}
+
+.oldweb-blogroll li {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-block: 0.3125rem;
+  border-bottom: 1px dotted #a9a184;
+}
+
+.oldweb-post__links {
+  margin-top: 0.75rem;
+}
+
+.oldweb-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid #a9a184;
+}
+
+.oldweb-backlink {
+  margin-top: 1rem;
+}
+
+/* Photography */
+.oldweb-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin-block: 1rem;
+}
+
+.oldweb-gallery li {
+  display: grid;
+  align-content: start;
+  gap: 0.125rem;
+}
+
+.oldweb-gallery a {
+  display: block;
+}
+
+.oldweb-gallery__thumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 0.25rem;
+  border: 3px solid #fff;
+  outline: 1px solid #8b8368;
+  overflow: hidden;
+}
+
+.oldweb-gallery__thumb--missing {
+  display: grid;
+  place-items: center;
+  background: #000;
+  color: #8f8f89;
+  font-size: 0.75rem;
+}
+
+.oldweb-gallery__title {
+  font-size: 0.8125rem;
+}
+
+.photo-art {
+  position: relative;
+  display: block;
+  background: #000;
+}
+
+.photo-art__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  filter: sepia(0.22) saturate(0.82) contrast(0.96);
+}
+
+.photo-art--infrared .photo-art__svg {
+  filter: none;
+}
+
+/* Vignette and grain, so the drawings read as old prints. Fades don't apply to focus or clicks. */
+.photo-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    url('../assets/grain.svg'),
+    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.38));
+  background-blend-mode: overlay;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.inspector {
+  display: grid;
+  gap: 0.5rem;
+  margin-block: 0.75rem;
+}
+
+.inspector__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+}
+
+.inspector__viewport {
+  max-height: 70vh;
+  overflow: auto;
+  border: 3px solid #fff;
+  outline: 1px solid #8b8368;
+  background: #000;
+}
+
+.inspector__image {
+  min-width: 100%;
+}
+
+.inspector__hotspot {
+  position: absolute;
+  z-index: 1;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0;
+  border: 1px dashed transparent;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.inspector__hotspot:hover,
+.inspector__hotspot:focus-visible {
+  border-color: #f4f0e2;
+  background: rgb(244 240 226 / 0.12);
+}
+
+.inspector__hint {
+  color: #5b564a;
+  font-size: 0.75rem;
+}
+
+.inspector__note {
+  padding: 0.5rem 0.625rem;
+  border-left: 3px solid #6e1f2a;
+  background: #ebe5cd;
+}
+
+.oldweb-details {
+  margin-block: 0.75rem;
+}
+
+.oldweb-details > summary {
+  min-height: 2.75rem;
+  padding-block: 0.625rem;
+  color: #18388f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.oldweb-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fbf8ee;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.oldweb-table th,
+.oldweb-table td {
+  padding: 0.3125rem 0.5rem;
+  border: 1px solid #a9a184;
+  overflow-wrap: anywhere;
+  text-align: left;
+  vertical-align: top;
+}
+
+.oldweb-table th {
+  width: 40%;
+  background: #e6dfc6;
+  font-weight: 500;
+}
+
+.oldweb-embedded-thumb {
+  max-width: 22rem;
+  margin: 0.75rem 0;
+}
+
+.oldweb-embedded-thumb figcaption {
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+}
+
+.file-report {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #6e1f2a;
+  background: #efe7cf;
+}
+
+.file-report form {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.file-report--solved {
+  border-width: 2px;
+}
+
+.file-report__unlock {
+  font-weight: 700;
+}
+
+/* Forms and controls */
+.old-button {
+  min-height: 2.75rem;
+  padding: 0.25rem 0.875rem;
+  border: 2px outset #d9d6ca;
+  background: #d9d6ca;
+  color: #101010;
+  font-family: var(--font-oldweb);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.old-button:active,
+.old-button[aria-pressed='true'] {
+  border-style: inset;
+  background: #c4c1b3;
+  font-weight: 700;
+}
+
+.old-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.oldweb input,
+.oldweb select,
+.oldweb textarea {
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 2px inset #c9c6b8;
+  border-radius: 0;
+  background: #fff;
+  color: #101010;
+  font-family: var(--font-oldweb);
+  font-size: 1rem;
+}
+
+.old-form-row input,
+.old-form-row select {
+  flex: 1 1 11rem;
+}
+
+.old-feedback {
+  color: #8c1d23;
+  font-weight: 700;
+}
+
+.oldweb-linkbutton {
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #18388f;
+  font-family: var(--font-oldweb);
+  font-size: 0.8125rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.oldweb-linkbutton:hover {
+  color: #a3202a;
+}
+
+.oldweb-form {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 28rem;
+  margin-block: 0.75rem;
+}
+
+.oldweb-password {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 24rem;
+  margin-block: 1rem;
+}
+
+.oldweb-password--compact {
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dotted #a9a184;
+  font-size: 0.75rem;
+}
+
+.oldweb-bounce {
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+  max-width: 28rem;
+  margin-block: 0.75rem;
+  padding: 0.75rem;
+  border: 2px outset #d9d6ca;
+  background: #d9d6ca;
+}
+
+.oldweb-source-toggle {
+  margin-top: 1rem;
+}
+
+.oldweb-source,
+.oldweb-index pre {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #a9a184;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Guestbook */
+.oldweb-entries {
+  display: grid;
+  gap: 0.625rem;
+  margin-top: 0.75rem;
+}
+
+.oldweb-entry {
+  padding: 0.5rem 0.75rem 0.25rem;
+  border: 1px solid #a9a184;
+  background: #fbf8ee;
+}
+
+.oldweb-entry--unknown {
+  border-color: #6e1f2a;
+  background: #efe8d6;
+}
+
+.oldweb-entry__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.oldweb-entry__details {
+  display: grid;
+  gap: 0.125rem;
+  margin-block: 0.25rem 0.625rem;
+  padding: 0.5rem;
+  background: #1c1c1c;
+  color: #d2d09d;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.oldweb-entry__details div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+}
+
+/* Friends */
+.oldweb-friends {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.oldweb-friends li {
+  padding-bottom: 0.875rem;
+  border-bottom: 1px dotted #a9a184;
+}
+
+.oldweb-friends h2 {
+  margin: 0;
+}
+
+.oldweb .oldweb-case-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: #6e1f2a;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.oldweb-index__contents {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+}
+
+/* Bare server errors, in the browser's own default style */
+.server-error {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  color: #111;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.0625rem;
+}
+
+.server-error h1 {
+  font-size: 1.875rem;
+}
+
+.server-error hr {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 40rem) {
+  .oldweb-home {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .oldweb-blogroll li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+/* Comfortable tap targets on touch screens and narrow windows */
+@media (max-width: 60rem), (pointer: coarse) {
+  .oldweb__nav a {
+    display: inline-block;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.125rem;
+    line-height: 1.75rem;
+  }
+
+  .oldweb-blogroll a,
+  .oldweb-list a,
+  .oldweb-pager a,
+  .oldweb-backlink a,
+  .oldweb-post__links a,
+  .server-error a {
+    display: inline-block;
+    min-height: 2.75rem;
+    padding-block: 0.625rem;
+    line-height: 1.5rem;
+  }
+}
